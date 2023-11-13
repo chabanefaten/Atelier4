@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="card shadow mb-4">
+    <div class="card-body">
+    <table class="table table-striped" >
+    <thead>
+        <tr> 
+            <th>Id</th><th>Nom</th> <th>Prix</th> <th>Date Création</th><th>Type</th>
+         </tr>
+    </thead>
+    <tbody *ngFor="let parfum of parfums">
+    <tr >
+        <td>{{parfum.idParfum}}</td>
+        <td>{{parfum.nomParfum}}</td>
+        <td>{{parfum.prixParfum}}</td>
+        <td>{{parfum.dateCreation | date:'dd/MM/yyyy'}}</td>
+        <td>{{parfum.type.nomTyp}}</td>
+
+        <td><a class="btn btn-danger" (click)="supprimerParfum(parfum)">Supprimer</a></td>
+        <td><a class="btn btn-success" [routerLink]="['/updateParfum',parfum.idParfum]">Modifier</a></td>
+        
+    </tr>
+    </tbody>
+    </table>
+    </div>
+    </div>
+</div>
