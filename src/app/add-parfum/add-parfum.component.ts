@@ -2,6 +2,8 @@ import { Component, OnInit} from '@angular/core';
 import { Parfum } from '../model/parfum.model';
 import { ParfumService } from '../services/parfum.service';
 import { Type } from '../model/type.model';
+import { ActivatedRoute, Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-add-parfum',
@@ -15,7 +17,13 @@ export class AddParfumComponent implements OnInit{
   newType! : Type;
 
 
-  constructor(private parfumService: ParfumService)
+
+
+  constructor(private parfumService: ParfumService,
+             private activatedRoute: ActivatedRoute,
+             private router :Router
+    
+    )
   {}
 
 
@@ -30,7 +38,8 @@ export class AddParfumComponent implements OnInit{
     this.newParfum.type = this.newType;
     this.parfumService.ajouterParfum(this.newParfum);
     this.message = "Parfum " + this.newParfum.nomParfum + " ajouté avec succés ! ";
-
+    this.router.navigate(["parfums"]);
+      
     }
     
 

@@ -6,6 +6,8 @@ import { ParfumsComponent } from './parfums/parfums.component';
 import { AddParfumComponent } from './add-parfum/add-parfum.component';
 import { FormsModule } from '@angular/forms';
 import { UpdateParfumComponent } from './update-parfum/update-parfum.component';
+import { LoginComponent } from './login/login.component';
+import { ForbiddenComponent } from './forbidden/forbidden.component';
 
 
 @NgModule({
@@ -14,6 +16,8 @@ import { UpdateParfumComponent } from './update-parfum/update-parfum.component';
     ParfumsComponent,
     AddParfumComponent,
     UpdateParfumComponent,
+    LoginComponent,
+    ForbiddenComponent,
 
   ],
   imports: [

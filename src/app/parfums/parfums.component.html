@@ -15,8 +15,8 @@
         <td>{{parfum.dateCreation | date:'dd/MM/yyyy'}}</td>
         <td>{{parfum.type.nomTyp}}</td>
 
-        <td><a class="btn btn-danger" (click)="supprimerParfum(parfum)">Supprimer</a></td>
-        <td><a class="btn btn-success" [routerLink]="['/updateParfum',parfum.idParfum]">Modifier</a></td>
+        <td><a   *ngIf="authService.isAdmin()"  class="btn btn-danger"  (click)="supprimerParfum(parfum)">Supprimer</a></td>
+        <td><a   *ngIf="authService.isAdmin()"  class="btn btn-success"  [routerLink]="['/updateParfum',parfum.idParfum]">Modifier</a></td>
         
     </tr>
     </tbody>

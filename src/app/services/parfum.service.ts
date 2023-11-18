@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Parfum } from '../model/parfum.model';
 import { Type } from '../model/type.model';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,9 @@ export class ParfumService {
   types! : Type[];
   
 
-  constructor() { 
+  constructor()
+    
+    { 
     this.types = [ {idTyp : 1, nomTyp: "Aromatique"},
                    {idTyp : 2, nomTyp : "Fleurie"}
                  ]; 

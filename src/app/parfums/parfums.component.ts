@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Parfum } from '../model/parfum.model';
 import { ParfumService } from '../services/parfum.service';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-parfums',
@@ -10,7 +11,8 @@ export class ParfumsComponent implements OnInit {
   parfums? : Parfum[];
  
 
-  constructor(private parfumService: ParfumService){
+  constructor(private parfumService : ParfumService,
+    public authService: AuthService){
     //this.parfums=[]; 
    
   }
