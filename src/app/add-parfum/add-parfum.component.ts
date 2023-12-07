@@ -28,19 +28,20 @@ export class AddParfumComponent implements OnInit{
 
 
   ngOnInit(): void {
-      this.types = this.parfumService.listeTypes();
+    this.parfumService.listeTypes().
+subscribe(typs => {this.types = typs;
+console.log(typs);
+});
+
 
   }
-  addParfum(){
-    console.log(this.newParfum);
-
-    this.newType=this.parfumService.consulterTypes(this.newidTyp);
-    this.newParfum.type = this.newType;
-    this.parfumService.ajouterParfum(this.newParfum);
-    this.message = "Parfum " + this.newParfum.nomParfum + " ajouté avec succés ! ";
-    this.router.navigate(["parfums"]);
-      
+ 
+    addParfum(){
+      this.newParfum.type = this.types.find(typ => typ.idTyp == this.newidTyp)!;
+      this.parfumService.ajouterParfum(this.newParfum)
+      .subscribe(par => {
+      console.log(par);
+      this.router.navigate(['parfums']);
+      });
+      }
     }
-    
-
-}

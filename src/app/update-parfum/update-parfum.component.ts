@@ -18,24 +18,27 @@ export class UpdateParfumComponent implements OnInit{
              private router :Router,
              private parfumService: ParfumService) 
  {}
+
  ngOnInit(): void {
-     //console.log(this.activatedRoute.snapshot.params['id']);
-     this.types = this.parfumService.listeTypes();
-     this.currentParfum= this.parfumService.consulterParfum(this.activatedRoute.snapshot. params['id']);
-     this.updatedTypId=this.currentParfum.type.idTyp;
+    this.parfumService.listeTypes().
+    subscribe(typs => {this.types = typs;
+    console.log(typs);
+    });
 
- }
- updateParfum()
- { 
-  this.currentParfum.type=this.parfumService.consulterTypes(this.updatedTypId);
-  this.parfumService.updateParfum(this.currentParfum);
-  this.router.navigate(["parfums"]);
-
+  this.parfumService.consulterParfum(this.activatedRoute.snapshot.params['id']).
+  subscribe(par =>{ this.currentParfum = par});
+  this.updatedTypId =
+this.currentParfum.type.idTyp;
+   
  }
  
 
+ updateParfum()
+ { 
+  this.currentParfum.type = this.types.find(typ => typ.idTyp == this.updatedTypId)!;
+  this.parfumService.updateParfum(this.currentParfum).subscribe(par => {
+    this.router.navigate(['parfums']); }
+    );
 
-
-
-
+ }
 }

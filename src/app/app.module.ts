@@ -8,6 +8,10 @@ import { FormsModule } from '@angular/forms';
 import { UpdateParfumComponent } from './update-parfum/update-parfum.component';
 import { LoginComponent } from './login/login.component';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
+import { HttpClientModule } from '@angular/common/http';
+import { RechercheParTypeComponent } from './recherche-par-type/recherche-par-type.component';
+import { SearchFilterPipe } from './search-filter.pipe';
+import { RechercheParNomComponent } from './recherche-par-nom/recherche-par-nom.component';
 
 
 @NgModule({
@@ -18,12 +22,16 @@ import { ForbiddenComponent } from './forbidden/forbidden.component';
     UpdateParfumComponent,
     LoginComponent,
     ForbiddenComponent,
+    RechercheParTypeComponent,
+    SearchFilterPipe,
+    RechercheParNomComponent,
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

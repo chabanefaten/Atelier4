@@ -8,7 +8,9 @@ import { Router } from '@angular/router';
 export class AuthService {
 
   users: User[] = [{"username":"admin","password":"123","roles":['ADMIN']},
-                   {"username":"nadhem","password":"123","roles":['USER']} ];
+                   {"username":"faten","password":"123","roles":['USER']},
+                   {"username":"AGENT","password":"123","roles":['AGENT']}  
+                  ];
     public loggedUser!:string;
     public isloggedIn: Boolean = false;
     public roles!:string[];
@@ -36,9 +38,15 @@ export class AuthService {
       if (!this.roles) //this.roles== undefiened
       return false;
       return (this.roles.indexOf('ADMIN') >-1);
-      
+    
     }
-  
+    isAGENT():Boolean{
+      if (!this.roles) //this.roles== undefiened
+      return false;
+      return (this.roles.indexOf('AGENT') >-1);
+      }
+      
+    
     logout() {
       this.isloggedIn= false;
       this.loggedUser = undefined!;

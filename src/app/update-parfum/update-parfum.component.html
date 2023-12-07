@@ -3,7 +3,7 @@
     <h2>Modifier un Parfum :</h2>
     </div>
     <form >
-        <div  class="col-sm-2 col-md-2 col-lg-2">
+        <div readonly class="col-sm-2 col-md-2 col-lg-2">
         <label >ID Parfum</label>
         <input   readonly  type="text" [(ngModel)]="currentParfum.idParfum"name="idParfum" class="form-control">
         </div>
@@ -22,14 +22,14 @@
  class="form-control">
 </div>
 
-<div class="col-sm-4 col-md-4 col-lg-4">
+ <div class="col-sm-4 col-md-4 col-lg-4">
     <label>Type</label>
     <select class="form-control form-control-lg" id="idTyp" name="idTyp" [(ngModel)]="updatedTypId">
         <option *ngFor="let typ of types" [value]="typ.idTyp">
             {{typ.nomTyp}}
         </option>
     </select>
-</div>
+</div> 
         <div class="mt-2">
         <button type="submit" (click)="updateParfum()"class="btn btn-success">Modifier</button>
         </div>

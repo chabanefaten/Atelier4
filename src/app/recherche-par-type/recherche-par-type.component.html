@@ -1,4 +1,14 @@
 <div class="container">
+  <div class="col-sm-4 col-md-4 col-lg-4">
+        <label>Types</label>
+        <select class="form-control form-control-lg" id="idTyp" name="idTyp" [(ngModel)]="IdType" (change)="onChange()">
+            <option *ngFor="let typ of types" value="{{typ.idTyp}}">
+                {{typ.nomTyp}}
+            </option>
+        </select>
+    </div>
+
+
     <div class="card shadow mb-4">
     <div class="card-body">
     <table class="table table-striped" >
@@ -14,11 +24,9 @@
         <td>{{parfum.prixParfum}}</td>
         <td>{{parfum.dateCreation | date:'dd/MM/yyyy'}}</td>
         <td>{{parfum.type?.nomTyp}}</td>
-
+<!-- 
         <td><a   *ngIf="authService.isAdmin()"  class="btn btn-danger"  (click)="supprimerParfum(parfum)">Supprimer</a></td>
-        <td><a   *ngIf="authService.isAdmin()"  class="btn btn-success"  [routerLink]="['/updateParfum',parfum.idParfum]">Modifier</a></td>
-     
-        
+        <td><a   *ngIf="authService.isAdmin()"  class="btn btn-success"  [routerLink]="['/updateParfum',parfum.idParfum]">Modifier</a></td> -->    
     </tr>
     </tbody>
     </table>

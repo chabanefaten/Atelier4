@@ -24,6 +24,5 @@ export class ParfumGuard implements CanActivate {
       this.router.navigate(['app-forbidden']);
       return false;
     }
-  }
   
-}
+}}

@@ -6,6 +6,8 @@ import { UpdateParfumComponent } from './update-parfum/update-parfum.component';
 import { LoginComponent } from './login/login.component';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
 import { ParfumGuard } from './parfum.guard';
+import { RechercheParTypeComponent } from './recherche-par-type/recherche-par-type.component';
+import { RechercheParNomComponent } from './recherche-par-nom/recherche-par-nom.component';
 
 const routes: Routes = [
   {path: "parfums", component : ParfumsComponent},
@@ -13,7 +15,10 @@ const routes: Routes = [
   {path: "updateParfum/:id", component: UpdateParfumComponent},
   {path: 'login', component: LoginComponent},
   {path: 'app-forbidden', component: ForbiddenComponent},
+  {path: "rechercheParType", component : RechercheParTypeComponent},
+  {path: "rechercheParNom", component : RechercheParNomComponent},
   { path: "", redirectTo: "parfums", pathMatch: "full" }
+ 
 
 
 

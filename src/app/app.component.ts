@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from './services/auth.service';
 import { Router } from '@angular/router';
+import { ParfumService } from './services/parfum.service';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +11,10 @@ import { Router } from '@angular/router';
 export class AppComponent implements OnInit{
   title = 'parfum';
   constructor(public authService: AuthService,
+    private parfumService: ParfumService,
               private router :Router){}
+
+
 
               ngOnInit() {
                 let isloggedin: string;

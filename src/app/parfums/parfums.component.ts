@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Parfum } from '../model/parfum.model';
 import { ParfumService } from '../services/parfum.service';
@@ -18,15 +19,30 @@ export class ParfumsComponent implements OnInit {
   }
 
   ngOnInit(): void { 
-    this.parfums = this.parfumService.listeParfums();
+    this.chargerParfums();
+    
    }
+   chargerParfums(){
+ // this.parfums = this.parfumService.listeParfums();
+   this.parfumService.listeParfum().subscribe(pars => {
+    console.log(pars);
+    this.parfums = pars;
+    });
 
-    supprimerParfum(p: Parfum)
+  }
+
+  supprimerParfum(p: Parfum)
 {
-       //console.log(p);
-       let conf = confirm("Etes-vous sûr ?");
-        if(conf)
-           this.parfumService.supprimerParfum(p);
+let conf = confirm("Etes-vous sûr ?");
+if (conf)
+this.parfumService.supprimerParfum(p.idParfum!).subscribe(() => {
+console.log("parfum supprimé");
+//this.chargerParfums();
+});
+} 
 
-}
+
+
+
+
 }
