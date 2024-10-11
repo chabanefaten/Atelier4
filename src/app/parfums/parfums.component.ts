@@ -11,6 +11,7 @@ import { AuthService } from '../services/auth.service';
 export class ParfumsComponent implements OnInit {
   parfums? : Parfum[];
  
+ 
 
   constructor(private parfumService : ParfumService,
     public authService: AuthService){

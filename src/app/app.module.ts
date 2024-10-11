@@ -12,6 +12,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { RechercheParTypeComponent } from './recherche-par-type/recherche-par-type.component';
 import { SearchFilterPipe } from './search-filter.pipe';
 import { RechercheParNomComponent } from './recherche-par-nom/recherche-par-nom.component';
+import { ListeTypesComponent } from './liste-types/liste-types.component';
+import { UpdateTypeComponent } from './update-type/update-type.component';
 
 
 @NgModule({
@@ -25,6 +27,8 @@ import { RechercheParNomComponent } from './recherche-par-nom/recherche-par-nom.
     RechercheParTypeComponent,
     SearchFilterPipe,
     RechercheParNomComponent,
+    ListeTypesComponent,
+    UpdateTypeComponent,
 
   ],
   imports: [

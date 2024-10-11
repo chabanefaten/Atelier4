@@ -8,6 +8,7 @@ import { ForbiddenComponent } from './forbidden/forbidden.component';
 import { ParfumGuard } from './parfum.guard';
 import { RechercheParTypeComponent } from './recherche-par-type/recherche-par-type.component';
 import { RechercheParNomComponent } from './recherche-par-nom/recherche-par-nom.component';
+import { ListeTypesComponent } from './liste-types/liste-types.component';
 
 const routes: Routes = [
   {path: "parfums", component : ParfumsComponent},
@@ -17,6 +18,8 @@ const routes: Routes = [
   {path: 'app-forbidden', component: ForbiddenComponent},
   {path: "rechercheParType", component : RechercheParTypeComponent},
   {path: "rechercheParNom", component : RechercheParNomComponent},
+  {path: "listeTypes", component : ListeTypesComponent},
+
   { path: "", redirectTo: "parfums", pathMatch: "full" }
  
 

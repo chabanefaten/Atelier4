@@ -29,7 +29,7 @@ export class AddParfumComponent implements OnInit{
 
   ngOnInit(): void {
     this.parfumService.listeTypes().
-subscribe(typs => {this.types = typs;
+subscribe(typs => {this.types = typs._embedded.types;
 console.log(typs);
 });
 

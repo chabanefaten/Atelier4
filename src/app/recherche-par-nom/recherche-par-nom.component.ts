@@ -12,6 +12,7 @@ export class RechercheParNomComponent implements OnInit {
 
   nomParfum! : string;
   parfums!: Parfum[];
+  allParfums! : Parfum[];
   searchTerm!: string;
   
   constructor(private parfumService : ParfumService) { }
@@ -23,4 +24,15 @@ export class RechercheParNomComponent implements OnInit {
       });
       
   }
+  rechercherPars(){
+    this.parfumService.rechercherParNom(this.nomParfum).
+    subscribe(pars => {
+    this.parfums = pars; 
+    console.log(pars)});
+    }
+    onKeyUp(filterText : string){
+      this.parfums = this.allParfums.filter(item =>
+        item.nomParfum?.toLowerCase().includes(filterText));
+      }
+      
 }
