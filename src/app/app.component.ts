@@ -14,17 +14,11 @@ export class AppComponent implements OnInit{
     private parfumService: ParfumService,
               private router :Router){}
 
+      ngOnInit() {
+        this.authService.loadToken();
+        if (this.authService.getToken()==null ||this.authService.isTokenExpired())
+            this.router.navigate(['/login']);
 
-
-              ngOnInit() {
-                let isloggedin: string;
-                let loggedUser: string;
-                isloggedin = localStorage.getItem('isloggedIn')!;
-                loggedUser = localStorage.getItem('loggedUser')!;
-                if (isloggedin != "true" || !loggedUser)
-                  this.router.navigate(['/login']);
-                else
-                  this.authService.setLoggedUserFromLocalStorage(loggedUser);
               }
             
               onLogout(){

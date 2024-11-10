@@ -4,41 +4,41 @@ import { ParfumService } from '../services/parfum.service';
 import { Parfum } from '../model/parfum.model';
 import { Type } from '../model/type.model';
 
+
 @Component({
   selector: 'app-update-parfum',
   templateUrl: './update-parfum.component.html',
   styleUrls: ['./update-parfum.component.css']
 })
-export class UpdateParfumComponent implements OnInit{
+export class UpdateParfumComponent implements OnInit {
   currentParfum = new Parfum();
-  types! : Type[];
-  updatedTypId! : number;
+  types!: Type[];
+  updatedTypId!: number;
 
- constructor(private activatedRoute: ActivatedRoute,
-             private router :Router,
-             private parfumService: ParfumService) 
- {}
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private router: Router,
+    private parfumService: ParfumService
+  ) {}
 
- ngOnInit(): void {
+  ngOnInit(): void {
+    // Charger les types
     this.parfumService.listeTypes().
-    subscribe(typs => {this.types = typs._embedded.types;
-    console.log(typs);
-    });
+     subscribe(typs => { this.types = typs;
+      console.log(typs);
+     });
+     
 
-  this.parfumService.consulterParfum(this.activatedRoute.snapshot.params['id']).
-  subscribe(par =>{ this.currentParfum = par});
-  this.updatedTypId =
-this.currentParfum.type.idTyp;
-   
- }
- 
+    // Récupérer le parfum à mettre à jour
+    this.parfumService.consulterParfum(this.activatedRoute.snapshot.params['id']).
+      subscribe(par => { this.currentParfum = par;
+        this.updatedTypId =   this.currentParfum.type.idTyp;
+      });
+  }
 
- updateParfum()
- { 
-  this.currentParfum.type = this.types.find(typ => typ.idTyp == this.updatedTypId)!;
-  this.parfumService.updateParfum(this.currentParfum).subscribe(par => {
-    this.router.navigate(['parfums']); }
-    );
-
- }
-}
+  updateParfum() {
+    this.currentParfum.type = this.types.find(typ => typ.idTyp == this.updatedTypId)!;
+         this.parfumService.updateParfum(this.currentParfum).subscribe(par => {
+      this.router.navigate(['parfums']); }
+      );
+  }}

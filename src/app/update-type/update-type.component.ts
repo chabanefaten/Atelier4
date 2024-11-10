@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Type } from '../model/type.model';
 
 @Component({
   selector: 'app-update-type',
@@ -7,4 +8,26 @@ import { Component } from '@angular/core';
 })
 export class UpdateTypeComponent {
 
+  @Input()
+   type! : Type;
+
+   @Input()
+   ajout!:boolean;
+
+   
+   @Output() 
+   typeUpdated = new EventEmitter<Type>();
+   
+  constructor()
+  {
+  }
+
+  ngOnInit(): void{
+    console.log("ngOnInit du composant UpdateType ",this.type);
+    
+  }
+  saveType(){
+    this.typeUpdated.emit(this.type);
+
+  }
 }

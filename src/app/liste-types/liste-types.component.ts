@@ -8,17 +8,46 @@ import { Type } from '../model/type.model';
 })
 export class ListeTypesComponent implements OnInit {
 
-    types! : Type[];
-    
-    constructor(private parfumService : ParfumService) { }
+  types!: Type[]; 
+  ajout:boolean=true;
+  updatedTyp: Type = { idTyp: 0, nomTyp: "" }; // Type mis à jour
 
-    ngOnInit(): void {
-      this.parfumService.listeParfum().  // Appel à la méthode qui retourne une liste de parfums
-      subscribe(parfums => {
-        // Si vous recevez un tableau de types, utilisez-le directement
-        this.types = parfums.map(parfum => parfum.type);  // Extraire les types à partir des parfums
-        console.log(this.types);
-      });
+  constructor(private parfumService: ParfumService) { }
+
+  ngOnInit(): void {
+    this.chargerTypes();
+  }
+
+  chargerTypes(): void {
+    this.parfumService.listeTypes().subscribe(
+      typs => {
+        this.types = typs;
+        console.log('Types récupérés:', typs); // Log des types récupérés
+      },
+      error => {
+        console.error('Erreur lors de la récupération des types:', error); // Gestion des erreurs
+      }
+    );
+  }
+
+  typeUpdated(typ: Type): void {
+    console.log("Type reçu du composant updateType:", typ);
+    this.parfumService.ajouterType(typ).subscribe(
+      () => {
+        console.log('Type ajouté avec succès.'); // Confirmation d'ajout
+        this.chargerTypes(); // Recharger les types
+      },
+      error => {
+        console.error('Erreur lors de l\'ajout du type:', error); // Gestion des erreurs
+      }
+    );
+  }
+
+
+
+  updateTyp(typ:Type) {
+    this.updatedTyp=typ;
+    this.ajout=false; 
     }
+    
 }
-

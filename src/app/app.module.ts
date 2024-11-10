@@ -8,12 +8,13 @@ import { FormsModule } from '@angular/forms';
 import { UpdateParfumComponent } from './update-parfum/update-parfum.component';
 import { LoginComponent } from './login/login.component';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule,HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RechercheParTypeComponent } from './recherche-par-type/recherche-par-type.component';
 import { SearchFilterPipe } from './search-filter.pipe';
 import { RechercheParNomComponent } from './recherche-par-nom/recherche-par-nom.component';
 import { ListeTypesComponent } from './liste-types/liste-types.component';
 import { UpdateTypeComponent } from './update-type/update-type.component';
+import { TokenInterceptor } from './services/token.interceptor';
 
 
 @NgModule({
@@ -37,7 +38,11 @@ import { UpdateTypeComponent } from './update-type/update-type.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    { provide : HTTP_INTERCEPTORS,
+      useClass : TokenInterceptor,
+      multi : true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

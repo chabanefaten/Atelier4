@@ -19,9 +19,10 @@
         <label >Date création</label>
         <input type="date" [(ngModel)]= "newParfum.dateCreation" name="dateCreation" class="form-control">
         </div>
+
        <div class="col-sm-4 col-md-4 col-lg-4">
             <label>Type</label>
-            <select class="form-control form-control-lg" id="idTyp" name="idTyp" [(ngModel)]="newidTyp">
+            <select class="form-control form-control-lg" id="idTyp" name="idTyp" [(ngModel)]="newIdTyp">
                 <option *ngFor="let typ of types" [value]="typ.idTyp">
                     {{typ.nomTyp}}
                 </option>
@@ -31,9 +32,6 @@
             
         <div class="mt-2">
         <button type="submit" (click)="addParfum()"class="btn btn-success">Ajouter</button>
-        <div>
-            <h3>{{message}}</h3>
-        </div>
         </div>
         </form>
         </div>

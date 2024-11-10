@@ -1,1 +1,0 @@
-export const  apiURL : string  = 'http://localhost:8091/parfums/api';

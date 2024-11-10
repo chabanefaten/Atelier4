@@ -2,7 +2,6 @@ import { ParfumService } from './../services/parfum.service';
 import { Component, OnInit } from '@angular/core';
 import { Parfum } from '../model/parfum.model';
 import { Type } from '../model/type.model';
-import { TypeWrapper } from '../model/TypeWrapped.model';
 
 
 @Component({
@@ -19,17 +18,14 @@ export class RechercheParTypeComponent implements OnInit {
   constructor(private parfumService: ParfumService) {}
 
   ngOnInit(): void {
-    // S'abonner à la liste des types en utilisant le TypeWrapper
-    this.parfumService.listeTypes().subscribe((typs: TypeWrapper) => {
-      this.types = typs._embedded.types; // Accéder au tableau types dans l'objet enveloppant
+    this.parfumService.listeTypes().
+    subscribe(typs=> {this.types = typs;
       console.log(typs);
     });
   }
 
   onChange() {
-    // Rechercher des parfums par type sélectionné
-    this.parfumService.rechercherParType(this.IdType).subscribe(prods => {
-      this.parfums = prods;
-    });
+    this.parfumService.rechercherParType(this.IdType).
+       subscribe(pars => {this.parfums = pars;});
   }
 }
